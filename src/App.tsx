@@ -1,19 +1,17 @@
-// import reactLogo from "./assets/react.svg";
-// import viteLogo from "/vite.svg";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Suspense } from "react";
 import Home from "./pages/home";
 import Resume from "./pages/resume";
 import NotFound from "./pages/not-found";
-import { Container } from "@mui/material";
+import PageLayout from "./layouts/PageLayout";
 
 const Preloader = () => <div>Loading...</div>;
 
-function App() {
+export default function App() {
   return (
-    <Container maxWidth="xl">
-      <BrowserRouter>
-        <Routes>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<PageLayout />}>
           <Route
             index
             element={
@@ -30,11 +28,10 @@ function App() {
               </Suspense>
             }
           />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
-      </BrowserRouter>
-    </Container>
+        </Route>
+
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
-
-export default App;
