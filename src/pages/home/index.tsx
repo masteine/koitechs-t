@@ -9,6 +9,11 @@ import {
 import { ChangeEvent, FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+/*
+  TODO
+  *** I believe that for real projects, we need to move all logic into a hook as part of the service layer in app design. ***
+ */
+
 export default function Home() {
   const navigate = useNavigate();
 
