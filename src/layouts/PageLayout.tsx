@@ -16,7 +16,7 @@ export default function PageLayout() {
         maxWidth="md"
         sx={{
           display: "flex",
-          py: 1,
+          py: 4,
           borderRadius: ({ shape }) => shape.borderRadius,
           backgroundColor: ({ palette }) => palette.background.paper
         }}>
