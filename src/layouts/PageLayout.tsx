@@ -10,6 +10,7 @@ export default function PageLayout() {
         justifyContent: "center",
         alignItems: "center",
         minHeight: "100vh",
+        py: 1,
         backgroundColor: grey[100]
       }}>
       <Container
@@ -20,7 +21,7 @@ export default function PageLayout() {
           borderRadius: ({ shape }) => shape.borderRadius,
           backgroundColor: ({ palette }) => palette.background.paper
         }}>
-        <Container maxWidth="sm">
+        <Container maxWidth="md">
           <Box
             sx={{
               display: "flex",
