@@ -29,41 +29,33 @@ export default function Home() {
   };
 
   return (
-    <Container maxWidth="sm">
+    <>
+      <Typography variant="h3" component="h1" align="center">
+        GitHub Resume
+      </Typography>
+
+      <Divider />
+
+      <Typography>Enter a GitHub username to generate a resume</Typography>
+
       <Box
-        sx={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          gap: "1rem"
-        }}>
-        <Typography variant="h3" component="h1" align="center">
-          GitHub Resume
-        </Typography>
-
-        <Divider />
-
-        <Typography>Enter a GitHub username to generate a resume</Typography>
-
-        <Box
-          component="form"
-          onSubmit={handleSubmit}
-          sx={{ display: "flex", gap: "1rem" }}>
-          <TextField
-            name="username"
-            placeholder="Enter a username"
-            label="Github Username"
-            onChange={handleChange}
-            value={value}
-            fullWidth
-            required
-            autoFocus
-          />
-          <Button variant="contained" size="large" type="submit">
-            Submit
-          </Button>
-        </Box>
+        component="form"
+        onSubmit={handleSubmit}
+        sx={{ display: "flex", gap: "1rem" }}>
+        <TextField
+          name="username"
+          placeholder="Enter a username"
+          label="Github Username"
+          onChange={handleChange}
+          value={value}
+          fullWidth
+          required
+          autoFocus
+        />
+        <Button variant="contained" size="large" type="submit">
+          Submit
+        </Button>
       </Box>
-    </Container>
+    </>
   );
 }

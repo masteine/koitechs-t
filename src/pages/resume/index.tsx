@@ -1,3 +1,7 @@
+import { Box, Container } from "@mui/material";
+import { useGenerateResume } from "./useGenerateResume";
+
 export default function Resume() {
-  return <>Resume page</>;
+  const {} = useGenerateResume();
+  return <></>;
 }

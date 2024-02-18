@@ -20,7 +20,17 @@ export default function PageLayout() {
           borderRadius: ({ shape }) => shape.borderRadius,
           backgroundColor: ({ palette }) => palette.background.paper
         }}>
-        <Outlet />
+        <Container maxWidth="sm">
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              flexDirection: "column",
+              gap: "1rem"
+            }}>
+            <Outlet />
+          </Box>
+        </Container>
       </Container>
     </Box>
   );
