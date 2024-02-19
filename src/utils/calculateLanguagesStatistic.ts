@@ -1,17 +1,30 @@
-import { Repository } from "../api/user/types";
+export function calculateLanguagesStatistic(
+  languageStats: Record<string, number>[]
+) {
+  const totalBytesPerLanguage: Record<string, number> = languageStats.reduce(
+    (acc, repo) => {
+      Object.entries(repo).forEach(([language, bytes]) => {
+        if (acc[language]) {
+          acc[language] += bytes;
+        } else {
+          acc[language] = bytes;
+        }
+      });
+      return acc;
+    },
+    {}
+  );
 
-export function calculateLanguagesStatistic(repos: any[]) {
-  let languagesStats: { [key: string]: number } = {};
-  repos.forEach((repo: Repository) => {
-    if (repo.language && !languagesStats[repo.language]) {
-      languagesStats[repo.language] = 1;
-    } else if (repo.language) {
-      languagesStats[repo.language]++;
-    }
+  const totalBytes = Object.values(totalBytesPerLanguage).reduce(
+    (acc, bytes) => acc + bytes,
+    0
+  );
+
+  const percentages: Record<string, number> = {};
+
+  Object.entries(totalBytesPerLanguage).forEach(([language, bytes]) => {
+    percentages[language] = Number(((bytes / totalBytes) * 100).toFixed(2));
   });
 
-  return Object.keys(languagesStats).map((key) => ({
-    name: key,
-    value: languagesStats[key]
-  }));
+  return percentages;
 }

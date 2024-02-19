@@ -1,23 +1,52 @@
+import { octokitClient } from "../octokitClient";
+
 const getUserData = async (username: string | undefined = "") => {
-  const urlParamsComplete = username ? `/${username}` : "";
-
   try {
-    const userResponse = await fetch(
-      `https://api.github.com/users${urlParamsComplete}`
+    const response = await octokitClient.request(`GET /users/${username}`);
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+const getUserRepos = async (owner: string) => {
+  try {
+    const response = await octokitClient.request(`GET /users/${owner}/repos`);
+
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.message);
+  }
+};
+
+const getRepository = async (owner: string, repo: string) => {
+  try {
+    const response = await octokitClient.request(
+      `GET /repos/${owner}/${repo}`,
+      {
+        owner,
+        repo
+      }
     );
-    return userResponse.json();
-  } catch (error) {
-    throw new Error("User not found");
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };
 
-const getUserRepos = async (repos_url: string) => {
+const getRepositoryLanguages = async (owner: string, repo: string) => {
   try {
-    const reposResponse = await fetch(repos_url);
-    return reposResponse.json();
-  } catch (error) {
-    throw new Error("Repos not found");
+    const response = await octokitClient.request(
+      `GET /repos/${owner}/${repo}/languages`,
+      {
+        owner,
+        repo
+      }
+    );
+    return response.data;
+  } catch (error: any) {
+    throw new Error(error.message);
   }
 };
 
-export { getUserData, getUserRepos };
+export { getUserData, getUserRepos, getRepository, getRepositoryLanguages };
