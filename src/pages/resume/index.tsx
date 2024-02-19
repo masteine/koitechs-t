@@ -1,11 +1,4 @@
-import {
-  Box,
-  CircularProgress,
-  Divider,
-  Grid,
-  Paper,
-  Typography
-} from "@mui/material";
+import { Divider, Grid, Paper, Typography } from "@mui/material";
 import { useGenerateResume } from "./useGenerateResume";
 import { useParams } from "react-router-dom";
 import { UserNotFound } from "./components/UserNotFound";

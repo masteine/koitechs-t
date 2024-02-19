@@ -1,8 +1,8 @@
 import { Fragment } from "react";
 import { Title } from "./Title";
-import { Link as RouterLink } from "react-router-dom";
 import { Repository } from "../../../api/user/types";
-import { List, Link, ListItem, ListItemText } from "@mui/material";
+import { List, ListItem, ListItemText } from "@mui/material";
+import { RouterLink } from "../../../ui/RouterLink";
 
 type Props = { repos: Repository[] };
 
@@ -17,16 +17,11 @@ export function Repositories({ repos }: Props) {
       <List>
         {!recentlyEdited.length && <ListItem>No repositories found</ListItem>}
         {recentlyEdited.map(({ id, full_name, html_url }) => (
-          <Link
-            key={id}
-            to={html_url}
-            target="_blank"
-            component={RouterLink}
-            variant="body2">
+          <RouterLink key={id} to={html_url} target="_blank" variant="body2">
             <ListItem>
               <ListItemText primary={full_name} />
             </ListItem>
-          </Link>
+          </RouterLink>
         ))}
       </List>
     </Fragment>

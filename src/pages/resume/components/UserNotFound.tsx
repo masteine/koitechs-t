@@ -1,5 +1,5 @@
 import { Box, Typography, Divider } from "@mui/material";
-import { Link } from "react-router-dom";
+import { RouterLink } from "../../../ui/RouterLink";
 
 type Props = {
   username: string | undefined;
@@ -16,7 +16,7 @@ export function UserNotFound({ username }: Props) {
         }}
       />
       <Typography>
-        Please <Link to="/">return back</Link> and try again.
+        Please <RouterLink to="/">return back</RouterLink> and try again.
       </Typography>
     </Box>
   );
