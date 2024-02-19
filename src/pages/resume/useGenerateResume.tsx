@@ -19,11 +19,8 @@ export function useGenerateResume({ username }: UserGenerateResume) {
 
   const generateResume = async (username: string) => {
     try {
-      const repos: any = await getUserRepos(username);
-      if (repos.length === 0) {
-        throw new Error("No repositories found for this user.");
-      }
-      const languagePromises = repos.map((repo: any) =>
+      const repos = await getUserRepos(username);
+      const languagePromises = repos.map((repo: Repository) =>
         getRepositoryLanguages(username, repo.name)
       );
       const languagesArray = await Promise.all(languagePromises);
